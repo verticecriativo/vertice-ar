@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -114,21 +114,20 @@
 	  </div>
 	 		
 		
-    <a-scene mindar-image="imageTargetSrc: ./target_Vertice_scale2_1000px.mind; showStats: false; uiScanning: #example-scanning-overlay; maxTrack: 9" embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+    <a-scene mindar-image="imageTargetSrc: ./target_Vertice_scale2_1000px.mind; showStats: false; uiScanning: #example-scanning-overlay; maxTrack: 1" embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
 		
       <a-assets>
-        <a-asset-item id="bearModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.1/examples/image-tracking/assets/band-example/bear/scene.gltf"></a-asset-item>
-        <a-asset-item id="raccoonModel" src="https://cdn.jsdelivr.net/gh/M3056789/PrismaMerlini_GLB@a7c3dcd120b2a8e78be812d53b711bb9d2ea53ca/Prisma_1.glb"></a-asset-item>
+        <a-asset-item id="prismaModel" src="./Prisma_1.glb"></a-asset-item>
       </a-assets>
 
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
       <a-entity mindar-image-target="targetIndex: 0">
-        <a-gltf-model rotation="20 0 0 " position="-0.2 -0.3 0.5" scale="0.5 0.5 0.5" src="#raccoonModel" animation-mixer>
+        <a-gltf-model rotation="20 0 0" position="-0.2 -0.3 0.5" scale="0.5 0.5 0.5" src="#prismaModel" animation-mixer></a-gltf-model>
       </a-entity>
-      <a-entity mindar-image-target="targetIndex: 1">
-        <a-gltf-model rotation="0 0 0 " position="0 -0.25 0" scale="0.05 0.05 0.05" src="#bearModel" animation-mixer>
-      </a-entity>
+      <!-- targetIndex 1 removed: this .mind holds a single target (1000x388), so a second index
+           never fires. Compile a second image into the .mind, raise maxTrack to match, then add
+           the entity back. -->
     </a-scene>
   </body>
 </html>
